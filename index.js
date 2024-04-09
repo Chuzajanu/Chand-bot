@@ -8,40 +8,6 @@ const axios = require("axios");
 const semver = require("semver");
 const logger = require("./utils/log");
 const chalk = require("chalk");
-var uptimelink = [`https://${process.env.REPL_SLUG}.${process.env.REPL_OWNER}.repl.co`]
-const Monitor = require('ping-monitor');
-for (const now of uptimelink) {
-  const monitor = new Monitor({
-    website: `${now}`,
-    title: 'ONLINE',
-    interval: 59,
-  config: {
-    intervalUnits: 'seconds'
-  }
-});
-monitor.on('up', (res) => console.log(chalk.bold.hex("#00FF00")("[ ONLINE ] ❯ ") + chalk.hex("#00FF00")(`${res.website}`)))
-monitor.on('down', (res) => console.log(chalk.bold.hex("#FF0000")("[ DOWN ] ❯ ") + chalk.hex("#FF0000")(`${res.website} ${res.statusMessage}`)))
-monitor.on('stop', (website) => console.log(chalk.bold.hex("#FF0000")("[ STOP ] ❯ ") + chalk.hex("#FF0000")(`${website}`)))
-monitor.on('error', (error) => console.log(chalk.bold.hex("#FF0000")("[ ERROR ] ❯ ") + chalk.hex("#FF0000")(`${error}`)))
-}
-/////////////////////////////////////////////
-//========= Check node.js version =========//
-/////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////
-//========= Create website for dashboard/uptime =========//
-///////////////////////////////////////////////////////////
-
-const express = require('express');
-const app = express();
-
-const port = process.env.PORT || 5000
-     
-app.listen(port, () =>
-	logger(`Your app is listening a http://localhost:${port}`, "[ ONLINE ]")
-     );      
-
-
 logger("Opened server site...", "[ Starting ]");
 
 /////////////////////////////////////////////////////////
@@ -80,4 +46,3 @@ axios.get("https://raw.githubusercontent.com/Mrchandu7/chandv2/main/package.json
   logger(res['data']['description'], "[ DESCRIPTION ]");
 });
 startBot();
-// THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CODE (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
