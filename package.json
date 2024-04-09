@@ -56,7 +56,6 @@
         "simple-youtube-api": "^5.2.1",
         "sqlite3": "^5.1.2",
         "string-similarity": "",
-        "team-atf-2": "^2.1.0",
         "to-zalgo": "^1.0.1",
         "totp-generator": "",
         "ytdl-core": "^4.11.2"
